@@ -2,12 +2,14 @@ import csv
 
 
 def main():
-    total, expenses = read('in.txt')
+    expenses = read('in.txt')
     insertion_sort_desc(expenses)
-    print("Total amount: ", total)
+    total = 0.0
     for e in expenses:
+        total += float(e[1])
         print(e)
 
+    print("Total amount: ", total)
 
 def is_sorted_desc(elements):
     prev = None
@@ -50,17 +52,14 @@ def read(filename):
     infile = open(filename)
     reader = csv.reader(infile, delimiter=' ')
     expenses = []
-    total = 0.0
     for line in reader:
         date_month_year = line[0].split('-')
         year_month_date = '-'.join(reversed(date_month_year))
 
         timestamp = ' '.join([year_month_date, line[1]])
-        expenses.append(timestamp)
+        expenses.append((timestamp, line[2]))
 
-        total += float(line[2])
-
-    return total, expenses
+    return expenses
 
 
 if __name__ == '__main__':
