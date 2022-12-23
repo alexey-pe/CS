@@ -9,7 +9,7 @@ def main():
 
     def ascending(left, right):
         return left < right
-    insertion_sort_desc(expenses, ascending)
+    insertion_sort_desc(expenses, descending)
 
     total = sum((e[1] for e in expenses))
     print("Total amount: ", total)
@@ -21,7 +21,7 @@ def main():
 def is_sorted(elements, predicate):
     prev = None
     for cur in elements:
-        if prev is not None and predicate(cur, prev):
+        if prev is not None and predicate(cur[0], prev[0]):
             return False
         prev = cur
     return True
@@ -47,7 +47,7 @@ def insertion_sort_desc(elements, predicate):
         print('Reached element by index ', k, ' with value ', val)
         assert is_sorted(elements[:k], predicate), 'Elements up to but excluding the element reached must already be sorted.'
         i = k
-        while i > 0 and predicate(val, elements[i - 1]):
+        while i > 0 and predicate(val[0], elements[i - 1][0]):
             elements[i] = elements[i - 1]
             i = i - 1
         assert i >= 0
