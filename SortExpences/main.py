@@ -23,7 +23,7 @@ def main():
 
     insertion_sort(expenses, chronological)
 
-    total = sum((e[1] for e in expenses))
+    total = sum(e[1] for e in expenses)
     print("Total amount: ", total)
 
     for e in expenses:
@@ -79,15 +79,19 @@ def insertion_sort(elements, predicate):
 
 
 def read(filename):
-    infile = open(filename)
-    reader = csv.reader(infile, delimiter=' ')
-    expenses = []
-    for line in reader:
-        date_month_year = line[0].split('-')
-        year_month_date = '-'.join(reversed(date_month_year))
+    def reverse_date(date):
+        day_month_year = date.split('-')
+        return '-'.join(reversed(day_month_year))
 
-        timestamp = ' '.join([year_month_date, line[1]])
-        expenses.append((timestamp, float(line[2])))
+    def make_timestamp(date, time):
+        return ' '.join([reverse_date(date), time])
+
+    def transform(line):
+        return make_timestamp(line[0], line[1]), float(line[2])
+
+    with open(filename) as infile:
+        reader = csv.reader(infile, delimiter=' ')
+        expenses = [transform(line) for line in reader]
 
     return expenses
 
