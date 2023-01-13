@@ -1,14 +1,9 @@
 import csv
+import operator
 
 
 def main():
     expenses = read('in.txt')
-
-    def descending(left, right):
-        return left > right
-
-    def ascending(left, right):
-        return left < right
 
     def timestamp(element):
         return element[0]
@@ -16,14 +11,14 @@ def main():
     def amount(element):
         return element[1]
 
-    cheapfirst = compose(ascending, amount)
-    costlyfirst = compose(descending, amount)
-    chronological = compose(ascending, timestamp)
-    recentfirst = compose(descending, timestamp)
+    cheapfirst = compose(operator.lt, amount)
+    costlyfirst = compose(operator.gt, amount)
+    chronological = compose(operator.lt, timestamp)
+    recentfirst = compose(operator.gt, timestamp)
 
     insertion_sort(expenses, chronological)
 
-    total = sum(e[1] for e in expenses)
+    total = sum(amount(e) for e in expenses)
     print("Total amount: ", total)
 
     for e in expenses:
