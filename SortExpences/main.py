@@ -1,24 +1,18 @@
 import csv
-import operator
+from operator import lt, gt, itemgetter
 
 
 def main():
     expenses = read('in.txt')
 
-    def timestamp(element):
-        return element[0]
-
-    def amount(element):
-        return element[1]
-
-    cheapfirst = compose(operator.lt, amount)
-    costlyfirst = compose(operator.gt, amount)
-    chronological = compose(operator.lt, timestamp)
-    recentfirst = compose(operator.gt, timestamp)
+    cheapfirst = compose(lt, itemgetter(1))
+    costlyfirst = compose(gt, itemgetter(1))
+    chronological = compose(lt, itemgetter(0))
+    recentfirst = compose(gt, itemgetter(0))
 
     insertion_sort(expenses, chronological)
 
-    total = sum(amount(e) for e in expenses)
+    total = sum(itemgetter(1)(e) for e in expenses)
     print("Total amount: ", total)
 
     for e in expenses:
