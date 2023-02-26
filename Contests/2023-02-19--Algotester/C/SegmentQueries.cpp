@@ -7,7 +7,8 @@ template<typename T>
 class SegmentQueriableArray
 {
 private:
-    typedef vector<T> vector_type;
+    using vector_type = vector<T>;
+    using const_iterator_type = typename vector_type::const_iterator;
     vector_type _totals;
 
     SegmentQueriableArray(const vector_type& a);
@@ -34,7 +35,8 @@ int main()
         a.push_back(ai);
     }
 
-    const auto sqa = SegmentQueriableArray<decltype(a)::value_type>::Create(a);
+    using element_type = decltype(a)::value_type;
+    const auto sqa = SegmentQueriableArray<element_type>::Create(a);
 
     int q;
     cin >> q;
@@ -56,7 +58,7 @@ SegmentQueriableArray<T>::SegmentQueriableArray(const vector_type& a)
     T currentTotal = T();
     _totals.push_back(currentTotal);
 
-    for (auto it = a.cbegin(); it != a.cend(); ++it)
+    for (const_iterator_type it = a.cbegin(); it != a.cend(); ++it)
     {
         currentTotal += *it;
         _totals.push_back(currentTotal);
