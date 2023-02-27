@@ -19,7 +19,7 @@ private:
 public:
     static const SegmentQueriableArray Create(const vector_type& a);
 
-    int GetZeroSumSegementCount(size_t l, size_t r) const;
+    int GetZeroSumSegmentsCount(size_t l, size_t r) const;
 };
 
 int main()
@@ -46,7 +46,7 @@ int main()
         int l, r;
         cin >> l >> r;
 
-        int count = sqa.GetZeroSumSegementCount(l, r);
+        int count = sqa.GetZeroSumSegmentsCount(l, r);
         cout << count << endl;
     }
 }
@@ -71,7 +71,7 @@ const SegmentQueriableArray<T> SegmentQueriableArray<T>::Create(const vector_typ
 }
 
 template<typename T>
-int SegmentQueriableArray<T>::GetZeroSumSegementCount(size_t l, size_t r) const
+int SegmentQueriableArray<T>::GetZeroSumSegmentsCount(size_t l, size_t r) const
 {
     int result = 0;
     for (size_t ll = l; ll <= r; ++ll)
