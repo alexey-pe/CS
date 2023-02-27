@@ -1,4 +1,5 @@
 #include <iostream>
+#include <numeric>
 #include <vector>
 
 using namespace std;
@@ -51,18 +52,10 @@ int main()
 }
 
 template<typename T>
-SegmentQueriableArray<T>::SegmentQueriableArray(const vector_type& a)
+SegmentQueriableArray<T>::SegmentQueriableArray(const vector_type& a) :
+    _totals(a.size() + 1)
 {
-    _totals.reserve(a.size() + 1);
-
-    T currentTotal = T();
-    _totals.push_back(currentTotal);
-
-    for (const_iterator_type it = a.cbegin(); it != a.cend(); ++it)
-    {
-        currentTotal += *it;
-        _totals.push_back(currentTotal);
-    }
+    partial_sum(a.begin(), a.end(), _totals.begin() + 1);
 }
 
 template<typename T>
