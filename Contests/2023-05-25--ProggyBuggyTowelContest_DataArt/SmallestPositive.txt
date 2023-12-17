@@ -1,0 +1,7 @@
+Given a sequence of N integers, find the smallest positive element of it.
+
+Input
+7 -4 4 -7 3 0 8 2
+
+Output
+2
