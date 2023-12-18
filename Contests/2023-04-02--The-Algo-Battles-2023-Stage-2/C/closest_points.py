@@ -1,7 +1,20 @@
 import collections
+from enum import Enum
 from operator import itemgetter
 import itertools
 # from itertools import pairwise
+
+
+class Components(Enum):
+    X: int = 1
+    Y: int = 2
+
+    def __int__(self):
+        return self.value
+
+
+X = int(Components.X)
+Y = int(Components.Y)
 
 
 def main():
@@ -26,7 +39,7 @@ def main():
         dist_sorted = [p for p in itertools.chain(pairwise(x_sorted), pairwise(y_sorted))]
         dist_sorted.sort(key=lambda p: p[0][0])
         dist_sorted.sort(key=lambda p: p[0][0] + p[1][0])
-        dist_sorted.sort(key=lambda p: min(abs(p[0][1] - p[1][1]), abs(p[0][2] - p[1][2])))
+        dist_sorted.sort(key=lambda p: min(abs(p[0][X] - p[1][X]), abs(p[0][Y] - p[1][Y])))
         # print(dist_sorted)
 
         closest = dist_sorted[0]
