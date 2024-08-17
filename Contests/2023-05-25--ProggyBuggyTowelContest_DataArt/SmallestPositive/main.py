@@ -34,7 +34,13 @@ def smallest_positive(seq: list) -> int:
         The smallest positive element, or zero
         if none of the elements are positive.
     """
-    return 0
+    result = None
+    for x in seq:
+        if x <= 0:
+            continue
+        if result is None or x < result:
+            result = x
+    return result if result is not None else 0
 
 
 # Press the green button in the gutter to run the script.
