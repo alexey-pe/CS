@@ -3,6 +3,7 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
+
 def main():
     """Given a sequence of N integers, find the smallest positive element of it."""
 
@@ -34,7 +35,7 @@ def smallest_positive(seq: list) -> int:
         The smallest positive element, or zero
         if none of the elements are positive.
     """
-    return 0
+    return min((x for x in seq if x > 0), default=0)
 
 
 # Press the green button in the gutter to run the script.
