@@ -18,9 +18,9 @@ namespace MouseControls.Views
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MouseControls : Window
+    public partial class MouseControlsView : Window
     {
-        public MouseControls()
+        public MouseControlsView()
         {
             InitializeComponent();
         }
