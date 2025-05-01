@@ -29,7 +29,7 @@
                     <RadioButton Content="Right Button Click" IsChecked="{Binding Path=IsRightButtonClickChecked}" />
                     <RadioButton Content="Scroll Wheel Click" IsChecked="{Binding Path=IsScrollWheelClickChecked}" />
                     <RadioButton Content="Rotate Scroll Wheel" IsChecked="{Binding Path=IsRotateScrollWheelChecked}" />
-                    <GroupBox Header="Scroll Wheel Direction:">
+                    <GroupBox Header="Scroll Wheel Direction:" IsEnabled="{Binding Path=IsScrollWheelDirectionEnabled}">
                         <StackPanel Orientation="Horizontal">
                             <RadioButton Content="Direct Rotation" />
                             <RadioButton Content="Inverted Rotation" />

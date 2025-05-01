@@ -84,9 +84,12 @@ namespace MouseControls.ViewModels
                     }
 
                     OnPropertyChanged(nameof(IsRotateScrollWheelChecked));
+                    OnPropertyChanged(nameof(IsScrollWheelDirectionEnabled));
                 }
             }
         }
+
+        public bool IsScrollWheelDirectionEnabled => IsRotateScrollWheelChecked;
 
         public bool IsAltFlagChecked
         {
