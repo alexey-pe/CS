@@ -12,11 +12,64 @@ namespace MouseControls.ViewModels
         {
             _rotateSetup = new ButtonsSetup()
             {
+                MouseButton = MouseButtonClick.Left,
                 KeyboardButtons = KeyboardButtonFlag.Ctrl
             };
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public bool IsLeftButtonClickChecked
+        {
+            get => IsMouseButtonChecked(MouseButtonClick.Left);
+
+            set
+            {
+                if (GetSelectedMouseButton() != MouseButtonClick.Left)
+                {
+                    if (value)
+                    {
+                        SelectMouseButton(MouseButtonClick.Left);
+                    }
+
+                    OnPropertyChanged(nameof(IsLeftButtonClickChecked));
+                }
+            }
+        }
+
+        public bool IsRightButtonClickChecked
+        {
+            get => IsMouseButtonChecked(MouseButtonClick.Right);
+            set
+            {
+                if (GetSelectedMouseButton() != MouseButtonClick.Right)
+                {
+                    if (value)
+                    {
+                        SelectMouseButton(MouseButtonClick.Right);
+                    }
+
+                    OnPropertyChanged(nameof(IsRightButtonClickChecked));
+                }
+            }
+        }
+
+        public bool IsScrollWheelClickChecked
+        {
+            get => IsMouseButtonChecked(MouseButtonClick.Wheel);
+            set
+            {
+                if (GetSelectedMouseButton() != MouseButtonClick.Wheel)
+                {
+                    if (value)
+                    {
+                        SelectMouseButton(MouseButtonClick.Wheel);
+                    }
+
+                    OnPropertyChanged(nameof(IsScrollWheelClickChecked));
+                }
+            }
+        }
 
         public bool IsAltFlagChecked
         {
@@ -70,6 +123,18 @@ namespace MouseControls.ViewModels
 
                 OnPropertyChanged(nameof(IsShiftFlagChecked));
             }
+        }
+
+        private bool IsMouseButtonChecked(MouseButtonClick mouseButtonClick)
+        {
+            return GetSelectedMouseButton() == mouseButtonClick;
+        }
+
+        private MouseButtonClick GetSelectedMouseButton() => _rotateSetup.MouseButton;
+
+        private void SelectMouseButton(MouseButtonClick mouseButtonClick)
+        {
+            _rotateSetup.MouseButton = mouseButtonClick;
         }
 
         private bool IsKeyboardButtonFlagSet(KeyboardButtonFlag keyboardButtonFlag)

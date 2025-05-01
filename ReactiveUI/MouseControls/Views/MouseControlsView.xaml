@@ -25,9 +25,9 @@
             <!--MouseButtonClick-s-->
             <GroupBox Header="Mouse Buttons:">
                 <StackPanel Orientation="Vertical">
-                    <RadioButton Content="Left Button Click" />
-                    <RadioButton Content="Right Button Click" />
-                    <RadioButton Content="Scroll Wheel Click" />
+                    <RadioButton Content="Left Button Click" IsChecked="{Binding Path=IsLeftButtonClickChecked}" />
+                    <RadioButton Content="Right Button Click" IsChecked="{Binding Path=IsRightButtonClickChecked}" />
+                    <RadioButton Content="Scroll Wheel Click" IsChecked="{Binding Path=IsScrollWheelClickChecked}" />
                     <!--<RadioButton Content="Rotate Scroll Wheel" />
                     <GroupBox Header="Scroll Wheel Direction:">
                         <StackPanel Orientation="Horizontal">
