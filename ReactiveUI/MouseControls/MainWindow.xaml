@@ -1,0 +1,52 @@
+﻿<Window x:Class="MouseControls.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MouseControls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type Control}" x:Key="SelectionItemControlStyle">
+            <Setter Property="Margin" Value="10,5,5,5" />
+        </Style>
+        <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource ResourceKey=SelectionItemControlStyle}">
+            <Setter Property="Margin" Value="20,10,5,5" />
+        </Style>
+        <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ResourceKey=SelectionItemControlStyle}" />
+        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ResourceKey=SelectionItemControlStyle}" />
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel Orientation="Vertical">
+            <!--CameraAction-s-->
+            <GroupBox Header="Camera Actions:">
+                <Label Content="Rotate" />
+            </GroupBox>
+            <StackPanel Orientation="Horizontal">
+                <!--MouseButtonClick-s-->
+                <GroupBox Header="Mouse Buttons:">
+                    <StackPanel Orientation="Vertical">
+                        <RadioButton Content="Left Button Click" />
+                        <RadioButton Content="Right Button Click" />
+                        <RadioButton Content="Scroll Wheel Click" />
+                        <RadioButton Content="Rotate Scroll Wheel" />
+                        <GroupBox Header="Scroll Wheel Direction:">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton Content="Direct Rotation" />
+                                <RadioButton Content="Inverted Rotation" />
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </GroupBox>
+                <!--KeyboardButtonFlag-s-->
+                <GroupBox Header="Keyboard Buttons:">
+                    <StackPanel Orientation="Vertical">
+                        <CheckBox Content="Ctrl" />
+                        <CheckBox Content="Shift" />
+                        <CheckBox Content="Alt" />
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>
