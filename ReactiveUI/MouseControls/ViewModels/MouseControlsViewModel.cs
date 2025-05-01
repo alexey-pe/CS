@@ -71,6 +71,23 @@ namespace MouseControls.ViewModels
             }
         }
 
+        public bool IsRotateScrollWheelChecked
+        {
+            get => IsMouseButtonChecked(MouseButtonClick.RotateWheel);
+            set
+            {
+                if (GetSelectedMouseButton() != MouseButtonClick.RotateWheel)
+                {
+                    if (value)
+                    {
+                        SelectMouseButton(MouseButtonClick.RotateWheel);
+                    }
+
+                    OnPropertyChanged(nameof(IsRotateScrollWheelChecked));
+                }
+            }
+        }
+
         public bool IsAltFlagChecked
         {
             get => IsKeyboardButtonFlagSet(KeyboardButtonFlag.Alt);

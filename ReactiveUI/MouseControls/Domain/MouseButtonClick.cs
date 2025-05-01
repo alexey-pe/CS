@@ -4,6 +4,7 @@
     {
         Left,
         Right,
-        Wheel
+        Wheel,
+        RotateWheel
     }
 }
