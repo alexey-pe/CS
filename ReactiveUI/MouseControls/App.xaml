@@ -1,7 +1,7 @@
 ﻿<Application x:Class="MouseControlsApplication.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MouseControls"
+             xmlns:local="clr-namespace:MouseControlsApplication"
              StartupUri="Views\MouseControlsView.xaml">
     <Application.Resources>
          
