@@ -20,20 +20,35 @@ namespace MouseControls.ViewModels
 
         public bool IsCtrlFlagChecked
         {
-            get => (_rotateSetup.KeyboardButtons & KeyboardButtonFlag.Ctrl) != 0;
+            get => IsKeyboardButtonFlagSet(KeyboardButtonFlag.Ctrl);
             set
             {
                 if (value)
                 {
-                    _rotateSetup.KeyboardButtons |= KeyboardButtonFlag.Ctrl;
+                    SetKeyboardButtonFlag(KeyboardButtonFlag.Ctrl);
                 }
                 else
                 {
-                    _rotateSetup.KeyboardButtons &= ~KeyboardButtonFlag.Ctrl;
+                    ClearKeyboardButtonFlag(KeyboardButtonFlag.Ctrl);
                 }
 
                 OnPropertyChanged(nameof(IsCtrlFlagChecked));
             }
+        }
+
+        private bool IsKeyboardButtonFlagSet(KeyboardButtonFlag keyboardButtonFlag)
+        {
+            return (_rotateSetup.KeyboardButtons & keyboardButtonFlag) != 0;
+        }
+
+        private void SetKeyboardButtonFlag(KeyboardButtonFlag keyboardButtonFlag)
+        {
+            _rotateSetup.KeyboardButtons |= keyboardButtonFlag;
+        }
+
+        private void ClearKeyboardButtonFlag(KeyboardButtonFlag keyboardButtonFlag)
+        {
+            _rotateSetup.KeyboardButtons &= ~keyboardButtonFlag;
         }
 
         private void OnPropertyChanged(string propertyName)
