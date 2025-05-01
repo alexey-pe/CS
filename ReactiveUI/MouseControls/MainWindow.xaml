@@ -29,13 +29,13 @@
                         <RadioButton Content="Left Button Click" />
                         <RadioButton Content="Right Button Click" />
                         <RadioButton Content="Scroll Wheel Click" />
-                        <RadioButton Content="Rotate Scroll Wheel" />
+                        <!--<RadioButton Content="Rotate Scroll Wheel" />
                         <GroupBox Header="Scroll Wheel Direction:">
                             <StackPanel Orientation="Horizontal">
                                 <RadioButton Content="Direct Rotation" />
                                 <RadioButton Content="Inverted Rotation" />
                             </StackPanel>
-                        </GroupBox>
+                        </GroupBox>-->
                     </StackPanel>
                 </GroupBox>
                 <!--KeyboardButtonFlag-s-->
