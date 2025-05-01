@@ -18,6 +18,24 @@ namespace MouseControls.ViewModels
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        public bool IsAltFlagChecked
+        {
+            get => IsKeyboardButtonFlagSet(KeyboardButtonFlag.Alt);
+            set
+            {
+                if (value)
+                {
+                    SetKeyboardButtonFlag(KeyboardButtonFlag.Alt);
+                }
+                else
+                {
+                    ClearKeyboardButtonFlag(KeyboardButtonFlag.Alt);
+                }
+
+                OnPropertyChanged(nameof(IsAltFlagChecked));
+            }
+        }
+
         public bool IsCtrlFlagChecked
         {
             get => IsKeyboardButtonFlagSet(KeyboardButtonFlag.Ctrl);
@@ -33,6 +51,24 @@ namespace MouseControls.ViewModels
                 }
 
                 OnPropertyChanged(nameof(IsCtrlFlagChecked));
+            }
+        }
+
+        public bool IsShiftFlagChecked
+        {
+            get => IsKeyboardButtonFlagSet(KeyboardButtonFlag.Shift);
+            set
+            {
+                if (value)
+                {
+                    SetKeyboardButtonFlag(KeyboardButtonFlag.Shift);
+                }
+                else
+                {
+                    ClearKeyboardButtonFlag(KeyboardButtonFlag.Shift);
+                }
+
+                OnPropertyChanged(nameof(IsShiftFlagChecked));
             }
         }
 

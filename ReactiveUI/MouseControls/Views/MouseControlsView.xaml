@@ -41,8 +41,8 @@
             <GroupBox Header="Keyboard Buttons:">
                 <StackPanel Orientation="Vertical">
                     <CheckBox Content="Ctrl" IsChecked="{Binding Path=IsCtrlFlagChecked}" />
-                    <CheckBox Content="Shift" />
-                    <CheckBox Content="Alt" />
+                    <CheckBox Content="Shift" IsChecked="{Binding Path=IsShiftFlagChecked}" />
+                    <CheckBox Content="Alt" IsChecked="{Binding Path=IsAltFlagChecked}" />
                 </StackPanel>
             </GroupBox>
         </StackPanel>
